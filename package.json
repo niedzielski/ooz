@@ -13,6 +13,9 @@
   "engines": {
     "node": "5.0.0"
   },
+  "dependencies": {
+    "normalize.css": "3.0.3"
+  },
   "devDependencies": {
     "bower": "1.6.5",
     "electron-prebuilt": "0.34.3"

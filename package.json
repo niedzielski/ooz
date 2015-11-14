@@ -1,7 +1,14 @@
 {
   "name": "ooz",
-  "description": "A hackable music player.",
   "version": "0.0.0-dev",
+  "description": "A hackable music player.",
+  "keywords": [
+    "music",
+    "audio",
+    "player",
+    "mp3"
+  ],
+  "homepage": "https://github.com/rndmem/ooz",
   "repository": {
     "type": "git",
     "url": "https://github.com/rndmem/ooz.git"

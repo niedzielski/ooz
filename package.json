@@ -9,8 +9,12 @@
   "bugs": {
     "url": "https://github.com/rndmem/ooz/issues"
   },
+  "main": "electron/main.js",
   "engines": {
     "node": "5.0.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "0.34.3"
   },
   "private": true,
   "license": "GPL-3.0"

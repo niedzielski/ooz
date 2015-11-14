@@ -25,7 +25,8 @@
   },
   "devDependencies": {
     "bower": "1.6.5",
-    "electron-prebuilt": "0.34.3"
+    "electron-prebuilt": "0.34.3",
+    "eslint": "1.9.0"
   },
   "private": true,
   "license": "GPL-3.0"

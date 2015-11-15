@@ -1,41 +1,35 @@
-var app = require('app');
 var BrowserWindow = require('browser-window');
+var electronApp = require('app');
+var htmlApp = require('../app/main');
 var keyboardAccelerators = require('./keyboard-accelerators');
 var Menu = require('menu');
-var path = require('path');
-var url = require('url');
 var util = require('./util');
 var windowTemplate = require('./window');
-
-var DEFAULT_URL = url.format({
-  protocol: 'file',
-  pathname: path.resolve(__dirname, '..', 'app', 'main.html'),
-  slashes: true
-});
 
 var appWindow = null;
 
 function main(argv) {
-  var url = argv[2] || DEFAULT_URL;
-  app.on('ready', onAppReady.bind(null, url));
-  app.on('window-all-closed', onAllWindowsClosed);
-  app.on('quit', onAppQuit);
+  electronApp.on('ready', onAppReady);
+  electronApp.on('window-all-closed', onAllWindowsClosed);
+  electronApp.on('quit', onAppQuit);
 }
 
-function onAppReady(url) {
+function onAppReady() {
   hideAppMenu();
   keyboardAccelerators.register();
-  launchAppWindow(url);
+  launchAppWindow();
 }
 
 function hideAppMenu() {
   Menu.setApplicationMenu(null);
 }
 
-function launchAppWindow(url) {
+function launchAppWindow() {
   appWindow = new BrowserWindow(windowTemplate);
   appWindow.on('closed', onAppWindowClosed);
-  appWindow.loadUrl(url);
+  htmlApp.init().then(function() {
+    appWindow.loadUrl(htmlApp.url);
+  });
 }
 
 function onAppWindowClosed() {
@@ -46,11 +40,12 @@ function onAllWindowsClosed() {
   // On OS X, it's common for applications to stay active until the user quits
   // explicitly with Cmd + Q.
   if (!util.isMac()) {
-    app.quit();
+    electronApp.quit();
   }
 }
 
 function onAppQuit() {
+  htmlApp.deinit();
   keyboardAccelerators.unregister();
 }
 

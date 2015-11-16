@@ -1,44 +1,50 @@
 var express = require('express');
 var http = require('http');
-var portfinder = require('portfinder');
 var Promise = require('bluebird');
 var url = require('url');
 
 var app = express();
+var browserSync = require('browser-sync').create();
 var server = http.createServer(app);
+var router = express.Router();
+
+module.exports.url = null;
 
 module.exports.init = function() {
-  return Promise.promisify(portfinder.getPort)()
-    .then(onPortFound)
-    .catch(function(err) {
+  return Promise.promisify(server.listen, {context: server})(0, 'localhost')
+    .then(function() {
+      return initBrowserSync();
+    }).then(function() {
+      module.exports.url = url.format({
+        protocol: 'http',
+        hostname: server.address().address,
+        port: browserSync.getOption('port')
+      });
+
+      process.stdout.write(module.exports.url + '\n');
+    }).catch(function(err) {
       process.stderr.write(err);
     });
 };
+
+function initBrowserSync() {
+  return Promise.promisify(browserSync.init, {context: browserSync})({
+    server: './app',
+    middleware: [app],
+    files: 'app',
+    notify: false,
+    open: false
+  });
+}
 
 module.exports.deinit = function() {
   server.close();
 };
 
-function onPortFound(port) {
-  return new Promise(function(resolve, reject) {
-    server.on('listening', resolve);
-    server.listen(port, 'localhost');
-  }).then(function() {
-    module.exports.url = url.format({
-      protocol: 'http',
-      hostname: server.address().address,
-      port: server.address().port
-    });
-    process.stdout.write(module.exports.url + '\n');
-  }).catch(function(err) {
-    process.stderr.write(err);
-  });
-}
-
-app.use(express.static('app'));
+app.use(router);
 
 app.get('/', function(req, res) {
-  res.sendfile('index.html');
+  res.sendfile('app/index.html');
 });
 
 require.main === module && module.exports.init();

@@ -58,9 +58,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.227707"
-     inkscape:cx="99.283681"
-     inkscape:cy="200.66001"
+     inkscape:zoom="4.455414"
+     inkscape:cx="157"
+     inkscape:cy="157"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -82,7 +82,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -94,27 +94,27 @@
     <circle
        style="fill:#00ff00;stroke:none;stroke-opacity:1"
        id="path4136"
-       cx="83.752853"
-       cy="839.73303"
-       r="83.705063" />
+       cx="67.545952"
+       cy="895.36218"
+       r="64" />
     <circle
        style="fill:#00ff00;stroke:none;stroke-opacity:1"
        id="path4136-5"
-       cx="83.705063"
-       cy="950.99121"
-       r="83.705063" />
+       cx="135.11874"
+       cy="895.36218"
+       r="64" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:213.98709106px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:53.49677277;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="176.48837"
-       y="1035.4729"
+       style="font-style:normal;font-weight:normal;font-size:163.61213684px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:40.90303421;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="203.44354"
+       y="964.55023"
        id="text4200"
        sodipodi:linespacing="125%"
        transform="scale(1.0273077,0.97341818)"><tspan
          sodipodi:role="line"
          id="tspan4202"
-         x="176.48837"
-         y="1035.4729"
-         style="stroke:#00ff00;stroke-width:53.49677277;stroke-linejoin:round;stroke-opacity:1">z</tspan></text>
+         x="203.44354"
+         y="964.55023"
+         style="stroke:#00ff00;stroke-width:40.90303421;stroke-linejoin:round;stroke-opacity:1">z</tspan></text>
   </g>
 </svg>

@@ -17,6 +17,9 @@
     "url": "https://github.com/rndmem/ooz/issues"
   },
   "main": "electron/main.js",
+  "scripts": {
+    "postinstall": "bower i"
+  },
   "engines": {
     "node": "5.0.0"
   },

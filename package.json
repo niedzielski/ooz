@@ -36,5 +36,5 @@
     "gulp": "3.9.0"
   },
   "private": true,
-  "license": "GPL-3.0"
+  "license": "GPL-3.0+"
 }

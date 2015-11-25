@@ -1,0 +1,91 @@
+<link rel='import' href='/bower_components/polymer/polymer.html'>
+<link rel='import' href='/bower_components/iron-icons/av-icons.html'>
+<link rel='import' href='/bower_components/paper-button/paper-button.html'>
+<link rel='import' href='/bower_components/paper-progress/paper-progress.html'>
+
+<dom-module id='audio-player-controls'>
+
+  <style>
+
+    #container {
+      margin: 4px;
+      padding: 4px;
+      background-color: var(--paper-grey-100);
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    paper-button {
+      margin: auto;
+    }
+
+    paper-button[toggles][active] {
+      background-color: var(--paper-green-100);
+      color: var(--paper-green-500);
+    }
+
+    iron-icon {
+      --iron-icon-height: 18px;
+      --iron-icon-width: var(--iron-icon-height);
+    }
+
+    paper-progress {
+      --paper-progress-active-color: var(--paper-green-300);
+      margin: 4px 4px 2px 4px;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+  </style>
+
+  <template>
+
+    <div id='container'>
+
+      <paper-button id='previous-button' on-click='onClickPrevious'>
+        <iron-icon icon='av:skip-previous'></iron-icon>
+      </paper-button>
+
+      <paper-button toggles id='play-button' on-click='onClickPlay' active='{{playing}}'>
+        <iron-icon icon='av:play-arrow'></iron-icon>
+      </paper-button>
+
+      <paper-button id='next-button' on-click='onClickNext'>
+        <iron-icon icon='av:skip-next'></iron-icon>
+      </paper-button>
+
+      <paper-progress on-click='onClickSeek' value='0' max='100'></paper-progress>
+
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'audio-player-controls',
+      onClickPrevious: function() {
+        this.fire('click-previous');
+      },
+      onClickPlay: function() {
+        this.fire(this.playing ? 'click-play' : 'click-pause');
+      },
+      onClickNext: function() {
+        this.fire('click-next');
+      },
+      onClickSeek: function() {
+        // TODO: track, tap https://www.polymer-project.org/1.0/docs/devguide/events.html#annotated-listeners
+        var seekBar = document.getElementById('seek-bar');
+        this.fire('click-seek', { ratio: seekBar.ratio });
+      },
+      properties: {
+        playing: {
+          type: Boolean,
+          notify: true
+        }
+      }
+    });
+
+  </script>
+
+</dom-module>

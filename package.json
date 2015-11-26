@@ -22,7 +22,7 @@
     "update": "ncu && bcu"
   },
   "engines": {
-    "node": "5.0.0"
+    "node": "5.1.0"
   },
   "dependencies": {
     "bluebird": "3.0.5",

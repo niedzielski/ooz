@@ -31,10 +31,11 @@
     }
 
     paper-progress {
-      --paper-progress-active-color: var(--paper-green-300);
+      width: 100%;
       margin: 4px 4px 2px 4px;
       border-radius: 4px;
-      width: 100%;
+      z-index: 1; /* affect border-radius of child elements too */
+      --paper-progress-active-color: var(--paper-green-300);
     }
 
   </style>

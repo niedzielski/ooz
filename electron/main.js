@@ -3,6 +3,7 @@ var electronApp = require('app');
 var htmlApp = require('../app/main');
 var keyboardAccelerators = require('./keyboard-accelerators');
 var Menu = require('menu');
+var path = require('path');
 var util = require('./util');
 var windowTemplate = require('./window');
 
@@ -26,9 +27,12 @@ function hideAppMenu() {
 
 function launchAppWindow() {
   appWindow = new BrowserWindow(windowTemplate);
+  appWindow.webContents.on('devtools-opened', function() {
+    appWindow.webContents.addWorkSpace(path.resolve(__dirname, '..'));
+  });
   appWindow.on('closed', onAppWindowClosed);
   htmlApp.init().then(function() {
-    appWindow.loadUrl(htmlApp.url);
+    appWindow.loadURL(htmlApp.url);
   });
 }
 

@@ -1,5 +1,6 @@
 var express = require('express');
 var http = require('http');
+var path = require('path');
 var Promise = require('bluebird');
 var url = require('url');
 
@@ -44,7 +45,13 @@ module.exports.deinit = function() {
 app.use(router);
 
 app.get('/', function(req, res) {
-  res.sendfile('app/index.html');
+  res.sendFile('index.html', { root: __dirname });
 });
+
+app.use('/bower_components',
+  express.static(path.resolve(__dirname, '..', 'bower_components')));
+
+app.use('/node_modules',
+  express.static(path.resolve(__dirname, '..', 'node_modules')));
 
 require.main === module && module.exports.init();

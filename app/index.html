@@ -3,12 +3,35 @@
 
 <head>
   <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
   <title>ooz</title>
 
-  <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css" />
+  <link rel='stylesheet' href='/node_modules/normalize.css/normalize.css'>
+  <link rel='stylesheet' href='index.css'>
+
+  <link rel='import' href='elements.html'>
 </head>
 
 <body>
+
+  <audio-player-controls id='controls' class='center'>
+    <audio id='player'></audio>
+  </audio-player-controls>
+
+  <script>
+    var controls = document.getElementById('controls');
+    controls.addEventListener('click-play', function() {
+      console.log('play');
+    });
+    controls.addEventListener('click-pause', function() {
+      console.log('pause');
+    });
+  </script>
+
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src='index.js'></script>
+
 </body>
 
 </html>

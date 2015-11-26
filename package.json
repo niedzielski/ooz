@@ -19,7 +19,8 @@
   "main": "electron/main.js",
   "scripts": {
     "postinstall": "bower i",
-    "update": "ncu && bcu"
+    "update": "ncu && bcu",
+    "clobber": "rimraf node_modules bower_components"
   },
   "engines": {
     "node": "5.1.0"
@@ -36,7 +37,8 @@
     "electron-prebuilt": "0.35.1",
     "eslint": "1.10.1",
     "gulp": "3.9.0",
-    "npm-check-updates": "2.5.1"
+    "npm-check-updates": "2.5.1",
+    "rimraf": "2.4.4"
   },
   "private": true,
   "license": "GPL-3.0+"

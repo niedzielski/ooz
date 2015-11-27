@@ -10,7 +10,11 @@ var KEYS = [
 ];
 
 module.exports.register = function() {
-  KEYS.forEach(register);
+  KEYS.forEach(registerKey);
+};
+
+module.exports.proxyKey = function(key, win) {
+  win.webContents.send(key);
 };
 
 module.exports.unregister = function() {
@@ -19,7 +23,7 @@ module.exports.unregister = function() {
   });
 };
 
-function register(key) {
+function registerKey(key) {
   var callback = onKeyDown.bind(null, key);
   if (!globalShortcut.register(key, callback)) {
     process.stderr.write('failed to bind key=' + key + '\n');
@@ -29,6 +33,6 @@ function register(key) {
 function onKeyDown(key) {
   var win = BrowserWindow.getFocusedWindow();
   if (win) {
-    win.webContents.send(key);
+    module.exports.proxyKey(key, win);
   }
 }

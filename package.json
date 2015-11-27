@@ -38,7 +38,8 @@
     "eslint": "1.10.2",
     "gulp": "3.9.0",
     "npm-check-updates": "2.5.1",
-    "rimraf": "2.4.4"
+    "rimraf": "2.4.4",
+    "tsd": "0.6.5"
   },
   "private": true,
   "license": "GPL-3.0+"

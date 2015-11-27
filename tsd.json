@@ -1,0 +1,21 @@
+{
+  "version": "v4",
+  "repo": "DefinitelyTyped/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "bluebird/bluebird.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "express/express.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "github-electron/github-electron.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "node/node.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    }
+  }
+}

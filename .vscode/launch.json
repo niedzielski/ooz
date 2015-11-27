@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "electron",
+      "type": "node",
+      "request": "launch",
+      "program": "electron/main.js",
+      "runtimeExecutable": "node_modules/.bin/electron",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  ]
+}

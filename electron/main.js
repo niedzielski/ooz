@@ -5,7 +5,7 @@ var keyboardAccelerators = require('./keyboard-accelerators');
 var Menu = require('menu');
 var path = require('path');
 var util = require('./util');
-var windowTemplate = require('./window');
+var windowTemplate = require('./window-template');
 
 var appWindow = null;
 

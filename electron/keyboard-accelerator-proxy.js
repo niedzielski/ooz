@@ -31,8 +31,7 @@ function registerKey(key) {
 }
 
 function onKeyDown(key) {
-  var win = BrowserWindow.getFocusedWindow();
-  if (win) {
+  BrowserWindow.getAllWindows().forEach(function (win) {
     module.exports.proxyKey(key, win);
-  }
+  });
 }

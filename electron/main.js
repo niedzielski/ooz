@@ -7,7 +7,7 @@ var path = require('path');
 var windowTemplate = require('./window-template');
 var menuTemplate = require('./menu-template');
 
-var appWindow = null;
+var win = null;
 
 function main(argv) {
   electronApp.on('ready', onAppReady);
@@ -18,26 +18,26 @@ function main(argv) {
 function onAppReady() {
   initAppMenu();
   keyboardAcceleratorProxy.register();
-  launchAppWindow();
+  launchWin();
 }
 
 function initAppMenu() {
   Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
 }
 
-function launchAppWindow() {
-  appWindow = new BrowserWindow(windowTemplate);
-  appWindow.webContents.on('devtools-opened', function() {
-    appWindow.webContents.addWorkSpace(path.resolve(__dirname, '..'));
+function launchWin() {
+  win = new BrowserWindow(windowTemplate);
+  win.webContents.on('devtools-opened', function() {
+    win.webContents.addWorkSpace(path.resolve(__dirname, '..'));
   });
-  appWindow.on('closed', onAppWindowClosed);
+  win.on('closed', onWinClosed);
   htmlApp.init().then(function() {
-    appWindow.loadURL(htmlApp.url);
+    win.loadURL(htmlApp.url);
   });
 }
 
-function onAppWindowClosed() {
-  appWindow = null;
+function onWinClosed() {
+  win = null;
 }
 
 function onAllWindowsClosed() {

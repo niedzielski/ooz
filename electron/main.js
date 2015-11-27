@@ -1,11 +1,11 @@
 var BrowserWindow = require('browser-window');
 var electronApp = require('app');
 var htmlApp = require('../app/main');
-var keyboardAccelerators = require('./keyboard-accelerators');
+var keyboardAcceleratorProxy = require('./keyboard-accelerator-proxy');
 var Menu = require('menu');
 var path = require('path');
-var util = require('./util');
 var windowTemplate = require('./window-template');
+var menuTemplate = require('./menu-template');
 
 var appWindow = null;
 
@@ -16,13 +16,13 @@ function main(argv) {
 }
 
 function onAppReady() {
-  hideAppMenu();
-  keyboardAccelerators.register();
+  initAppMenu();
+  keyboardAcceleratorProxy.register();
   launchAppWindow();
 }
 
-function hideAppMenu() {
-  Menu.setApplicationMenu(null);
+function initAppMenu() {
+  Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
 }
 
 function launchAppWindow() {
@@ -43,14 +43,18 @@ function onAppWindowClosed() {
 function onAllWindowsClosed() {
   // On OS X, it's common for applications to stay active until the user quits
   // explicitly with Cmd + Q.
-  if (!util.isMac()) {
+  if (!isMac()) {
     electronApp.quit();
   }
 }
 
 function onAppQuit() {
   htmlApp.deinit();
-  keyboardAccelerators.unregister();
+  keyboardAcceleratorProxy.unregister();
+}
+
+function isMac() {
+  return process.platform === 'darwin';
 }
 
 require.main === module && main(process.argv);

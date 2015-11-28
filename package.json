@@ -18,9 +18,9 @@
   },
   "main": "electron/main.js",
   "scripts": {
-    "postinstall": "bower i",
-    "update": "ncu -u && bcu -u",
-    "clobber": "rimraf node_modules bower_components"
+    "postinstall": "bower i && tsd install",
+    "update": "ncu -u && bcu -u && tsd update -so",
+    "clobber": "rimraf node_modules bower_components typings"
   },
   "engines": {
     "node": "5.1.0"

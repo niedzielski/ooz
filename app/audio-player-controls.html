@@ -1,6 +1,7 @@
 <link rel='import' href='/bower_components/polymer/polymer.html'>
 <link rel='import' href='/bower_components/iron-icons/av-icons.html'>
 <link rel='import' href='/bower_components/paper-button/paper-button.html'>
+<link rel='import' href='/bower_components/paper-material/paper-material.html'>
 <link rel='import' href='/bower_components/paper-progress/paper-progress.html'>
 
 <dom-module id='audio-player-controls'>
@@ -8,7 +9,7 @@
   <style>
 
     #container {
-      margin: 4px;
+      margin: 8px;
       padding: 4px;
       background-color: var(--paper-grey-100);
       border-radius: 10px;
@@ -33,7 +34,7 @@
     paper-progress {
       width: 100%;
       margin: 4px 4px 2px 4px;
-      border-radius: 4px;
+      border-radius: 2px;
       z-index: 1; /* affect border-radius of child elements too */
       --paper-progress-active-color: var(--paper-green-300);
     }
@@ -42,7 +43,7 @@
 
   <template>
 
-    <div id='container'>
+    <paper-material id='container'>
 
       <paper-button id='previous-button' on-click='onClickPrevious'>
         <iron-icon icon='av:skip-previous'></iron-icon>
@@ -56,9 +57,9 @@
         <iron-icon icon='av:skip-next'></iron-icon>
       </paper-button>
 
-      <paper-progress id='seek-bar' on-click='onClickSeek' value='0' max='100'></paper-progress>
+      <paper-progress id='seek-bar' on-click='onClickSeek' max='100'></paper-progress>
 
-    </div>
+    </paper-material>
 
   </template>
 

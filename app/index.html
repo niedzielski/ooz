@@ -3,7 +3,7 @@
 
 <head>
   <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
 
   <title>ooz</title>
 
@@ -15,9 +15,15 @@
 
 <body>
 
+  <div id='container' class='fit vertical layout'>
+
   <audio-player-controls id='controls' class='center'>
     <audio id='player'></audio>
   </audio-player-controls>
+
+    <audio-playlist id='playlist'></audio-playlist>
+
+  </div>
 
   <script>
     var controls = document.getElementById('controls');

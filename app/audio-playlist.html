@@ -1,0 +1,98 @@
+<link rel='import' href='/bower_components/polymer/polymer.html'>
+<link rel='import' href='/bower_components/iron-list/iron-list.html'>
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel='import' href='/bower_components/paper-material/paper-material.html'>
+
+<dom-module id='audio-playlist'>
+
+  <style>
+    :host {
+      @apply(--layout-vertical);
+      @apply(--layout-flex);
+      --paper-item-focused: blue;
+    }
+
+
+    #container {
+      @apply(--layout-vertical);
+      @apply(--layout-flex);
+    }
+
+    iron-list {
+      @apply(--layout-fit);
+
+      --iron-list-items-container: {
+        
+      };
+    }
+
+    .item:focus,
+    paper-item[focused] {
+      outline: none;
+      background: white;
+    }
+
+    paper-item {
+      --paper-item-min-height: 24px;
+      --paper-item-focused: {
+        outline: none;
+        background: white;
+      };
+      --paper-button-flat-keyboard-focus: {
+        outline: none;
+        background: white;
+      };
+      --paper-button-raised-keyboard-focus: {
+        outline: none;
+        background: white;
+      };
+      font-size: 12px;
+      font-weight: 100;
+    }
+
+    .item {
+    }
+  
+    .item.selected {
+      background-color: #eaeaea;
+    }
+
+  </style>
+
+  <template>
+
+    <paper-material elevation='0' id='container'>
+
+      <iron-list items='{{items}}' as='item' selection-enabled multi-selection>
+        <template>
+          <paper-item tabindex='0' class$='[[_computedClass(selected)]]'>
+            [[item.name]]
+          </paper-item>
+        </template>
+      </iron-list>
+
+    </paper-material>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'audio-playlist',
+      _computedClass: function(selected) {
+        var classes = 'item';
+        if (selected) {
+          classes += ' selected';
+        }
+        return classes;
+      },
+      properties: {
+        items: {
+          type: Array,
+          notify: true
+        }
+      }
+    });
+
+  </script>
+
+</dom-module>

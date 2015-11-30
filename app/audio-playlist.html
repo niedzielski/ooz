@@ -9,63 +9,40 @@
     :host {
       @apply(--layout-vertical);
       @apply(--layout-flex);
-      --paper-item-focused: blue;
     }
-
 
     #container {
       @apply(--layout-vertical);
       @apply(--layout-flex);
     }
 
-    iron-list {
-      @apply(--layout-fit);
-
-      --iron-list-items-container: {
-        
-      };
-    }
-
-    .item:focus,
-    paper-item[focused] {
-      outline: none;
-      background: white;
-    }
-
     paper-item {
       --paper-item-min-height: 24px;
-      --paper-item-focused: {
-        outline: none;
-        background: white;
-      };
-      --paper-button-flat-keyboard-focus: {
-        outline: none;
-        background: white;
-      };
-      --paper-button-raised-keyboard-focus: {
-        outline: none;
-        background: white;
-      };
-      font-size: 12px;
+      font-size: 10pt;
       font-weight: 100;
+      /* todo: remove when github.com/PolymerElements/iron-list/issues/141 is
+               resolved. */
+      --paper-item-focused-before: {
+        background: none;
+      };
     }
 
     .item {
     }
-  
+
     .item.selected {
-      background-color: #eaeaea;
+      background-color: var(--paper-grey-100);
     }
 
   </style>
 
   <template>
 
-    <paper-material elevation='0' id='container'>
+    <paper-material id='container'>
 
       <iron-list items='{{items}}' as='item' selection-enabled multi-selection>
         <template>
-          <paper-item tabindex='0' class$='[[_computedClass(selected)]]'>
+          <paper-item class$='[[_computedClass(selected)]]'>
             [[item.name]]
           </paper-item>
         </template>

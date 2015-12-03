@@ -44,9 +44,15 @@ module.exports.deinit = function() {
 
 app.use(router);
 
+var pageDir = path.resolve(__dirname, 'page');
+
 app.get('/', function(req, res) {
-  res.sendFile('index.html', { root: __dirname });
+  res.sendFile('index.html', { root: pageDir });
 });
+
+});
+
+app.use('/', express.static(pageDir));
 
 app.use('/bower_components',
   express.static(path.resolve(__dirname, '..', 'bower_components')));

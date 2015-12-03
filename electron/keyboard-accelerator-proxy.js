@@ -13,10 +13,6 @@ module.exports.register = function() {
   KEYS.forEach(registerKey);
 };
 
-module.exports.proxyKey = function(key, win) {
-  win.webContents.send(key);
-};
-
 module.exports.unregister = function() {
   KEYS.forEach(function(key) {
     globalShortcut.unregister(key);
@@ -32,6 +28,6 @@ function registerKey(key) {
 
 function onKeyDown(key) {
   BrowserWindow.getAllWindows().forEach(function (win) {
-    module.exports.proxyKey(key, win);
+    win.webContents.send(key);
   });
 }

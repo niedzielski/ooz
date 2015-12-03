@@ -1,5 +1,4 @@
 var app = require('electron').app;
-var keyboardAcceleratorProxy = require('./keyboard-accelerator-proxy');
 
 module.exports = [
   {
@@ -20,17 +19,17 @@ module.exports = [
       {
         label: '&Zoom in',
         accelerator: 'CmdOrCtrl+=',
-        click: proxyKey.bind(null, 'CmdOrCtrl+=')
+        click: proxyAccelerator
       },
       {
         label: '&Reset zoom',
         accelerator: 'CmdOrCtrl+0',
-        click: proxyKey.bind(null, 'CmdOrCtrl+0')
+        click: proxyAccelerator
       },
       {
         label: 'Zoom &out',
         accelerator: 'CmdOrCtrl+-',
-        click: proxyKey.bind(null, 'CmdOrCtrl+-')
+        click: proxyAccelerator
       },
       {
         label: '&Close',
@@ -45,25 +44,21 @@ module.exports = [
       {
         label: '&Reload',
         accelerator: 'CmdOrCtrl+R',
-        click: function(item, focusedWin) {
-          if (focusedWin) {
-            focusedWin.webContents.reloadIgnoringCache();
-          }
+        click: function(item, win) {
+          win && win.webContents.reloadIgnoringCache();
         }
       },
       {
         label: 'Toggle &DevTools',
         accelerator: 'F12',
-        click: function(item, focusedWin) {
-          if (focusedWin) {
-            focusedWin.toggleDevTools();
-          }
+        click: function(item, win) {
+          win && win.toggleDevTools();
         }
       }
     ]
   }
 ];
 
-function proxyKey(accelerator, item, focusedWin) {
-  keyboardAcceleratorProxy.proxyKey(accelerator, focusedWin);
+function proxyAccelerator(item, win) {
+  win && win.webContents.send(item.accelerator);
 }

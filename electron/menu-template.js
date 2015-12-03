@@ -5,6 +5,11 @@ module.exports = [
     label: '&ooz',
     submenu: [
       {
+        label: '&Settings',
+        accelerator: 'CmdOrCtrl+,',
+        click: proxyAccelerator
+      },
+      {
         label: '&Quit',
         accelerator: 'CmdOrCtrl+Q',
         click: function() {

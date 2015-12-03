@@ -54,6 +54,9 @@ app.get('/', function(req, res) {
 
 app.use('/', express.static(pageDir));
 
+app.use('/element',
+  express.static(path.resolve(__dirname, 'app', 'element')));
+
 app.use('/bower_components',
   express.static(path.resolve(__dirname, '..', 'bower_components')));
 

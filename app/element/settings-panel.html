@@ -8,8 +8,34 @@
 <dom-module id='settings-panel'>
 
   <style>
+    :host {
+      @apply(--layout-vertical);
+      @apply(--layout-flex);
+    }
+
     #container {
+      @apply(--layout-vertical);
+      @apply(--layout-flex);
       padding: 16px;
+    }
+
+    paper-item {
+      --paper-item-min-height: 24px;
+      font-size: 10pt;
+      font-weight: 100;
+      /* todo: remove when github.com/PolymerElements/iron-list/issues/141 is
+               resolved. */
+      --paper-item-focused-before: {
+        background: none;
+      };
+    }
+
+    .item {
+      cursor: default;
+    }
+
+    .item.selected {
+      background-color: var(--paper-grey-100);
     }
   </style>
 
@@ -23,6 +49,13 @@
       <div>
         <h3>Themes</h3>
 
+        <iron-list items='{{items}}' as='item' selection-enabled on-selected-item-changed='onItemSelect'>
+          <template>
+            <paper-item class$='[[_computedClass(selected)]]'>
+              [[item.name]]
+            </paper-item>
+          </template>
+        </iron-list>
       </div>
 
     </paper-material>
@@ -31,7 +64,34 @@
 
   <script>
     Polymer({
-      is: 'settings-panel'
+      is: 'settings-panel',
+      _computedClass: function(selected) {
+        var classes = 'item';
+        if (selected) {
+          classes += ' selected';
+        }
+        return classes;
+      },
+      onItemSelect: function(event, item) {
+        console.dir(event);
+        item.value && this.fire('select', item.value.filename);
+      },
+      properties: {
+        items: {
+          type: Array,
+          notify: true,
+          value: function() { return [
+            {
+              name: 'paper',
+              filename: 'paper.js'
+            },
+            {
+              name: 'halftone',
+              filename: 'halftone.js'
+            }
+          ]; }
+        }
+      }
     });
   </script>
 

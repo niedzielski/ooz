@@ -20,7 +20,8 @@
   "scripts": {
     "postinstall": "bower i && tsd install",
     "update": "ncu -u && bcu -u && tsd update -so",
-    "clobber": "rimraf node_modules bower_components typings"
+    "clobber": "rimraf node_modules bower_components typings",
+    "start": "gulp"
   },
   "engines": {
     "node": "5.1.0"

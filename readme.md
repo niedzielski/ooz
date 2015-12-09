@@ -1,5 +1,9 @@
 # ooz
-A hackable music player.
+A hackable music player. This program aspires to be an open source,
+cross-platform foobar2000 competitor.
+
+## Alternatives (open source)
+- [DeaDBeeF](https://github.com/Alexey-Yakovenko/deadbeef)
 
 ## License (GPLv3+)
 © 2015 Stephen Niedzielski

@@ -1,39 +1,39 @@
 var BrowserWindow = require('browser-window');
-var electronApp = require('app');
-var htmlApp = require('../app/main');
+var app = require('app');
 var keyboardAcceleratorProxy = require('./keyboard-accelerator-proxy');
 var Menu = require('menu');
 var path = require('path');
 var windowTemplate = require('./window-template');
 var menuTemplate = require('./menu-template');
+var minimist = require('minimist');
 
 var win = null;
 
 function main(argv) {
-  electronApp.on('ready', onAppReady);
-  electronApp.on('window-all-closed', onAllWindowsClosed);
-  electronApp.on('quit', onAppQuit);
+  var url = minimist(argv.slice(2)).url;
+  process.stdout.write(url + '\n');
+  app.on('ready', onAppReady.bind(null, url));
+  app.on('window-all-closed', onAllWindowsClosed);
+  app.on('quit', onAppQuit);
 }
 
-function onAppReady() {
+function onAppReady(url) {
   initAppMenu();
   keyboardAcceleratorProxy.register();
-  launchWin();
+  launchWin(url);
 }
 
 function initAppMenu() {
   Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
 }
 
-function launchWin() {
+function launchWin(url) {
   win = new BrowserWindow(windowTemplate);
   win.webContents.on('devtools-opened', function() {
     win.webContents.addWorkSpace(path.resolve(__dirname, '..'));
   });
   win.on('closed', onWinClosed);
-  htmlApp.init().then(function() {
-    win.loadURL(htmlApp.url);
-  });
+  win.loadURL(url);
 }
 
 function onWinClosed() {
@@ -44,12 +44,11 @@ function onAllWindowsClosed() {
   // On OS X, it's common for applications to stay active until the user quits
   // explicitly with Cmd + Q.
   if (!isMac()) {
-    electronApp.quit();
+    app.quit();
   }
 }
 
 function onAppQuit() {
-  htmlApp.deinit();
   keyboardAcceleratorProxy.unregister();
 }
 

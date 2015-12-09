@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/rndmem/ooz/issues"
   },
-  "main": "electron/main.js",
+  "main": "electron",
   "scripts": {
     "postinstall": "bower i && tsd install",
     "update": "ncu -u && bcu -u && tsd update -so",
@@ -27,9 +27,9 @@
     "node": "5.1.0"
   },
   "dependencies": {
-    "bluebird": "3.0.6",
-    "express": "4.13.3",
-    "normalize.css": "3.0.3"
+    "minimist": "1.2.0",
+    "normalize.css": "3.0.3",
+    "page": "1.6.4"
   },
   "devDependencies": {
     "bower": "1.6.8",

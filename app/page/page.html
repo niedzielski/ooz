@@ -1,0 +1,22 @@
+<script src='/node_modules/page/page.js'></script>
+<script>
+  window.addEventListener('WebComponentsReady', function() {
+    page(app.baseUrl, function() {
+      app.page = 'playlist';
+    });
+
+    page('/settings', function() {
+      app.page = 'settings';
+    });
+
+    page('*', function() {
+      console.log(window.location.href);
+      page.redirect(app.baseUrl);
+    });
+
+    page({
+      // pages are just the base url with a ! fragment
+      hashbang: true
+    });
+  });
+</script>

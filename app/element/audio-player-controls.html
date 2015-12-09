@@ -80,6 +80,11 @@
         var seekBar = document.getElementById('seek-bar');
         this.fire('click-seek', { ratio: seekBar.ratio });
       },
+      togglePlayback: function() {
+        var play = document.getElementById('play-button');
+        play.fire('tap');
+        // TODO: ripple effect.
+      },
       properties: {
         playing: {
           type: Boolean,

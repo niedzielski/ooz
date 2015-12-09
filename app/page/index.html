@@ -7,37 +7,74 @@
 
   <title>ooz</title>
 
-  <link rel='stylesheet' href='/node_modules/normalize.css/normalize.css'>
-  <link rel='stylesheet' href='index.css'>
+  <script src='/bower_components/webcomponentsjs/webcomponents-lite.js'></script>
 
-  <link rel='import' href='element/elements.html'>
+  <link rel='stylesheet' href='/node_modules/normalize.css/normalize.css'>
+  <link rel='stylesheet' href='/page/index.css'>
+
+  <link rel='import' href='/element/elements.html'>
+  <link rel='import' href='/page/page.html'>
+
+  <style is='custom-style'>
+
+    #container {
+      @apply(--layout-fit);
+      @apply(--layout-vertical);
+    }
+
+    #pages {
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+    }
+
+    .page {
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+    }
+    
+    #controls {
+      @apply(--layout-horizontal);
+      @apply(--layout-center-justified);
+    }
+
+    #settings {
+      @apply(--layout-flex);
+      @apply(--layout-vertical);
+    }
+
+  </style>
 
 </head>
 
 <body>
 
-  <div id='container' class='fit vertical layout'>
+  <template is='dom-bind' id='app'>
 
-  <audio-player-controls id='controls' class='center'>
-    <audio id='player'></audio>
-  </audio-player-controls>
+    <div id='container'>
 
-    <audio-playlist id='playlist'></audio-playlist>
+      <audio-player-controls id='controls'>
+        <audio id='player'></audio>
+      </audio-player-controls>
 
-  </div>
+      <iron-pages attr-for-selected='page' selected='{{page}}' id='pages'>
 
-  <script>
-    var controls = document.getElementById('controls');
-    controls.addEventListener('click-play', function() {
-      console.log('play');
-    });
-    controls.addEventListener('click-pause', function() {
-      console.log('pause');
-    });
-  </script>
+        <section page='playlist' class='page'>
+          <audio-playlist page='playlist' id='playlist'></audio-playlist>
+        </section>
 
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <script src='index.js'></script>
+        <section page='settings' class='page'>
+          <paper-material id='settings'>
+            settings!
+          </paper-material>
+        </section>
+
+      </iron-pages>
+
+    </div>
+
+  </template>
+
+  <script src='/page/index.js'></script>
 
 </body>
 

@@ -5,7 +5,8 @@
       "name": "electron",
       "type": "node",
       "request": "launch",
-      "program": "electron/main.js",
+      "program": "electron/index.js",
+      "args": ["--url=file:///home/stephen/dev/ooz/app/page/index.html"],
       "runtimeExecutable": "node_modules/.bin/electron",
       "env": {
         "NODE_ENV": "development"

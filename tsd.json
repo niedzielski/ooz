@@ -5,17 +5,16 @@
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
-    "bluebird/bluebird.d.ts": {
-      "commit": "4910a7c52a1cf335877ea3b0917eb65117a66637"
-    },
-    "express/express.d.ts": {
-      "commit": "4910a7c52a1cf335877ea3b0917eb65117a66637"
-    },
     "github-electron/github-electron.d.ts": {
       "commit": "4910a7c52a1cf335877ea3b0917eb65117a66637"
     },
     "node/node.d.ts": {
-      "commit": "4910a7c52a1cf335877ea3b0917eb65117a66637"
+    },
+    "page/page.d.ts": {
+      "commit": "e5a27ea95e47b95333784f1f0d590127b4e39a89"
+    },
+    "minimist/minimist.d.ts": {
+      "commit": "220716d99a77df1654fb4f6cd760dc134ffa8e89"
     }
   }
 }

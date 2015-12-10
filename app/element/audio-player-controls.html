@@ -6,42 +6,46 @@
 
 <dom-module id='audio-player-controls'>
 
-  <style>
-
-    #container {
-      margin: 8px;
-      padding: 4px;
-      background-color: var(--paper-grey-100);
-      border-radius: 10px;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    paper-button {
-      margin: auto;
-    }
-
-    paper-button[toggles][active] {
-      background-color: var(--paper-green-100);
-      color: var(--paper-green-500);
-    }
-
-    iron-icon {
-      --iron-icon-height: 18px;
-      --iron-icon-width: var(--iron-icon-height);
-    }
-
-    paper-progress {
-      width: 100%;
-      margin: 4px 4px 2px 4px;
-      border-radius: 2px;
-      z-index: 1; /* affect border-radius of child elements too */
-      --paper-progress-active-color: var(--paper-green-300);
-    }
-
-  </style>
-
   <template>
+
+    <style>
+      :host {
+        @apply(--audio-player-controls);
+      }
+
+      #container {
+        margin: 8px;
+        padding: 4px;
+        background: var(--audio-player-controls-background, --default-primary-color);
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      paper-button {
+        margin: auto;
+      }
+
+      paper-button[toggles][active] {
+        background-color: var(--audio-player-controls-button-playing-background, --dark-primary-color);
+        color: var(--audio-player-controls-button-playing-foreground, --light-primary-color);
+      }
+
+      iron-icon {
+        --iron-icon-height: 18px;
+        --iron-icon-width: var(--iron-icon-height);
+      }
+
+      paper-progress {
+        width: 100%;
+        margin: 4px 4px 2px 4px;
+        border-radius: 2px;
+        z-index: 1; /* affect border-radius of child elements too */
+        --paper-progress-active-color: var(--audio-player-controls-progress-foreground, --accent-color);
+        --paper-progress-container-color: var(--audio-player-controls-progress-background, --dark-primary-color);
+      }
+
+    </style>
 
     <paper-material id='container'>
 

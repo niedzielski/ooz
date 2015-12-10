@@ -6,16 +6,16 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "github-electron/github-electron.d.ts": {
-      "commit": "220716d99a77df1654fb4f6cd760dc134ffa8e89"
+      "commit": "923c5431d9447db9d5cf41adc5914e3c94c1ff10"
     },
     "node/node.d.ts": {
-      "commit": "220716d99a77df1654fb4f6cd760dc134ffa8e89"
+      "commit": "923c5431d9447db9d5cf41adc5914e3c94c1ff10"
     },
     "page/page.d.ts": {
-      "commit": "220716d99a77df1654fb4f6cd760dc134ffa8e89"
+      "commit": "923c5431d9447db9d5cf41adc5914e3c94c1ff10"
     },
     "minimist/minimist.d.ts": {
-      "commit": "220716d99a77df1654fb4f6cd760dc134ffa8e89"
+      "commit": "923c5431d9447db9d5cf41adc5914e3c94c1ff10"
     }
   }
 }
